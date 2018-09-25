@@ -4,10 +4,15 @@
 //
 
 #include <iostream>
+#include <string>
 using namespace std;
+
+#include "multimedia.h"
 
 int main(int argc, const char* argv[])
 {
-    std::cout << "Hello brave new world" << std::endl;
+    multimedia * m = new multimedia("bonjour", "/media");
+    m->printMedia(cout);
+    delete m;
     return 0;
 }
