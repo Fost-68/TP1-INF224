@@ -1,29 +1,32 @@
 #ifndef MULTIMEDIA_H
 #define MULTIMEDIA_H
 
+#include <iostream>
+#include <cstring>
 #include <string>
 using namespace std;
 
 
 class multimedia
 {
-private:
+protected:
   string name;
   string path;
 
 public:
-    multimedia();
-    multimedia(string _name, string _path);
+    multimedia() : name("0"), path("0") {}
+    multimedia(string _name, string _path) : name(name), path(path) {}
 
-    ~multimedia() {};
+    virtual ~multimedia() {};
 
     const string getObjName() {return name;}
-    void setObjName(string _name) {name = _name;}
-
     const string getObjPath() {return path;}
+
+    void setObjName(string _name) {name = _name;}
     void setObjPath(string _path) {path = _path;}
 
-    const void printMedia(ostream& output) { output << "name: " << name << '\n' << "path: " << path <<endl;}
+    virtual const void printMedia(ostream& output) = 0;
+    virtual const void playMedia() = 0;
 };
 
-#endif // MULTIMEDIA_H
+#endif

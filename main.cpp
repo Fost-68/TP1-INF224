@@ -8,11 +8,10 @@
 using namespace std;
 
 #include "multimedia.h"
+#include "video.h"
+#include "photo.h"
 
 int main(int argc, const char* argv[])
 {
-    multimedia * m = new multimedia("bonjour", "/media");
-    m->printMedia(cout);
-    delete m;
-    return 0;
+
 }
