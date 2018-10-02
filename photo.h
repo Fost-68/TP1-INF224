@@ -15,6 +15,7 @@ public:
   /**
   *Constructeurs
   */
+  
   photo() : latitude(0), longitude(0) {}
   photo(string n, string p, int la, int lo) : multimedia(n,p), latitude(la), longitude(lo) {}
 
