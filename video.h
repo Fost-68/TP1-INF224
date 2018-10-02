@@ -12,14 +12,14 @@ private:
 
 public:
   video() : duree(0) {}
-  video(string n, string p, int d) : multimedia(name,path), duree(d) {}
+  video(string n, string p, int d) : multimedia(n,p), duree(d) {}
 
   const int getLength() {return duree;}
   void setLength(int _duree) {duree = _duree;}
 
-  const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
+  virtual const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
     <<"path :" << getObjPath() <<'\n'
-    << "type : Photo\n"
+    << "type : Video\n"
     << "duree :" << getLength() <<'\n'
     << "---------------------------"
     <<endl;}
