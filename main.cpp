@@ -23,8 +23,11 @@ int main(int argc, const char* argv[])
   for(int i = 0; i < tab_size; i++){
     multi_tab[i]->printMedia(cout);
     multi_tab[i]->playMedia();
+    delete(multi_tab[i]);
   }
 
+  free(multi_tab);
+  multi_tab = NULL;
 
-  return 0;
+  exit(0);
 }
