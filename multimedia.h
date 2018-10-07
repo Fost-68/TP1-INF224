@@ -9,7 +9,6 @@ using namespace std;
 /**
  * \file      multimedia.h
  * \author    WILME
- * \version   1.0
  * \date      2 Octobre 2018
  * \brief     Header contenant la déclaration et l'implémentation de l'objet
  *            multimedia
@@ -89,8 +88,8 @@ public:
     virtual const void printMedia(ostream& output) = 0;
 
     /**
- * \brief       Lis le media avec le programme par défaut de l'OS
-     */
+     * \brief       Lis le media avec le programme par défaut de l'OS
+    */
     virtual const void playMedia() = 0;
 };
 
