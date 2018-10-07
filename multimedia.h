@@ -11,17 +11,29 @@ using namespace std;
  * \author    WILME
  * \version   1.0
  * \date      2 Octobre 2018
- * \brief     Objet representant un fichier multimdia
+ * \brief     Header contenant la déclaration et l'implémentation de l'objet
+ *            multimedia
+ */
+
+ /**
  *
- * \details    Cette objet represente un fichier multimedia quelconque enregistre
- *                  quelque part dans le disque
+ * \class   multimedia
+ * \brief   Classe abstraite représentant un objet multimedia.
+ *
+ * La classe multimedia permet de representer dans un programme C++ un objet
+ * multimedia tel qu'une video ou une photo enregistre quelque part sur le disque
+ * dur
+ *
+ * Nous considérons que le minimum pour représenter un objet multimedia est de
+ * connaitre son nom et son chemin absolu ou relatif.
+ *
  */
 class multimedia
 {
 protected:
 
-  string name; /*! Le nom du fichier multimedia */
-  string path; /*! Le chemin absolue vers le fichier multimedia */
+  string name; /*!< Le nom du fichier multimedia */
+  string path; /*!< Le chemin absolue vers le fichier multimedia */
 
 public:
   /**
@@ -46,53 +58,38 @@ public:
 
     /**
      * \brief      Getter du nom du fichier multimedia
-     * \return     Un \e contenant le nom du fichier multimedia
+     * \return     Un \e string contenant le nom du fichier multimedia
      */
     const string getObjName() {return name;}
 
     /**
      * \brief      Getter du chemin absolu vers le multimedia
-     * \return     Un \e contenant le chemin absolu vers le multimedia  
+     * \return     Un \e string contenant le chemin absolu vers le multimedia
      */
     const string getObjPath() {return path;}
 
     /**
-     * \brief       Calcule la distance entre deux points
-     * \details    La distance entre les \a point1 et \a point2 est calculée par l'intermédiaire
-     *                  des coordonnées des points. (cf #Point)
-     * \param    point1         Point 1 pour le calcul de distance.
-     * \param    point2         Point 2 pour le calcul de distance.
-     * \return    Un \e float représentant la distance calculée.
-     */
+    *  \brief     Setter du nom de l'objet multimedia
+    *  \param _name Le nouveau nom de l'objet multimedia
+    *
+    */
     void setObjName(string _name) {name = _name;}
 
     /**
-     * \brief       Calcule la distance entre deux points
-     * \details    La distance entre les \a point1 et \a point2 est calculée par l'intermédiaire
-     *                  des coordonnées des points. (cf #Point)
-     * \param    point1         Point 1 pour le calcul de distance.
-     * \param    point2         Point 2 pour le calcul de distance.
-     * \return    Un \e float représentant la distance calculée.
-     */
+    *  \brief     Setter du chemin vers l'objet multimedia
+    *  \param _path Le nouveau chemin vers l'objet multimedia
+    *
+    */
     void setObjPath(string _path) {path = _path;}
 
     /**
-     * \brief       Calcule la distance entre deux points
-     * \details    La distance entre les \a point1 et \a point2 est calculée par l'intermédiaire
-     *                  des coordonnées des points. (cf #Point)
-     * \param    point1         Point 1 pour le calcul de distance.
-     * \param    point2         Point 2 pour le calcul de distance.
-     * \return    Un \e float représentant la distance calculée.
+     * \brief        Permet d'afficher les informations de l'objet multimedia
+     * \param output L'endroit où seront affichées ces informations
      */
     virtual const void printMedia(ostream& output) = 0;
 
     /**
-     * \brief       Calcule la distance entre deux points
-     * \details    La distance entre les \a point1 et \a point2 est calculée par l'intermédiaire
-     *                  des coordonnées des points. (cf #Point)
-     * \param    point1         Point 1 pour le calcul de distance.
-     * \param    point2         Point 2 pour le calcul de distance.
-     * \return    Un \e float représentant la distance calculée.
+ * \brief       Lis le media avec le programme par défaut de l'OS
      */
     virtual const void playMedia() = 0;
 };
