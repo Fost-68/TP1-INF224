@@ -47,7 +47,7 @@ public:
      * \param    _name        Le nom du multimedia
      * \param    _path        Le chemin absolue vers le multimedia
      */
-    multimedia(string _name, string _path) : name(name), path(path) {}
+    multimedia(string _name, string _path) : name(_name), path(_path) {}
 
     /**
     * \brief       Destructeur de multimedia

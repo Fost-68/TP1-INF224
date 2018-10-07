@@ -58,7 +58,7 @@ public:
   * \param _t Pointeur vers le tableau des durees des chapitres
   * \param _nc Le nombre de chapitre
   */
-  film(string _name, string _path, int _duree, int * _t, int _nc) : video(n,p,d), tab_durees(t), n_chapters(nc) {}
+  film(string _name, string _path, int _duree, int * _t, int _nc) : video(_name,_path,_duree), tab_durees(_t), n_chapters(_nc) {}
 
   /**
   * \brief \b Getter du pointeur vers le tableau de la durée des chapitres

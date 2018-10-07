@@ -87,7 +87,7 @@ public:
   *Question pour le prof, comment avoir une description pour une fonction qui
   *sera défini un peu partout
   */
-  const void playMedia() {system(("mpv" +getObjPath() +"&").c_str());}
+  const void playMedia() {system(("mpv " +getObjPath() +"&").c_str());}
 };
 
 #endif
