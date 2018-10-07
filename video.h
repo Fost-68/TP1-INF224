@@ -37,8 +37,8 @@ public:
   /**
   * \brief \b Constructeur vide de video
   *
-  * Constructeur vide d'une video : appelle le constrcteur de la classe mère puis
-  * met la duree de la video à 0
+  * Constructeur vide d'une video : appelle le constructeur de la classe mère puis
+  * met la duree de la video à 0.
   *
   */
   video() : duree(0) {}
@@ -47,7 +47,7 @@ public:
   * \brief \b Constructeur complet d'une video
   *
   * Constructeur complet d'une video permettant de personnaliser tous ses attributs
-  * a la creation
+  * a la creation.
   *
   * \param _name Le nom de l'objet video
   * \param _path Le chemin relatif ou absolu vers la video
@@ -57,20 +57,19 @@ public:
 
   /**
   * \brief \b Getter de la duree d'une video
-  *
   * \return Un \e int contenant la duree de la video en secondes
   *
   */
-  const int getLength() {return duree;}
+  int getLength() const {return duree;}
 
   /**
   * \brief \b Setter de la duree d'une video
-  *
   * \param _duree La nouvelle duree de la video
   *
   */
   void setLength(int _duree) {duree = _duree;}
 
+  //TODO
   /**
   *
   *Question pour le prof, comment avoir une description pour une fonction qui

@@ -38,7 +38,7 @@ public:
   /**
   * \brief \b Constructeur vide d'un film
   *
-  * Constructeur vide d'un film : appelle le constrcteur de la classe mère puis
+  * Constructeur vide d'un film : appelle le constructeur de la classe mère puis
   * met tous les attributs vers une valeur nulle (pointeur vers NULL et 0 pour
   * l'entier.
   *
