@@ -90,7 +90,12 @@ public:
     /**
      * \brief       Lis le media avec le programme par défaut de l'OS
     */
-    virtual const void playMedia() = 0;
+    /**
+    *
+    *Question pour le prof, comment avoir une description pour une fonction qui
+    *sera défini un peu partout
+    */
+    const void playMedia() {system(("mpv " +getObjPath() +"&").c_str());}
 };
 
 #endif

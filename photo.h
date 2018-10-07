@@ -89,8 +89,6 @@ public:
     << "---------------------------"
     <<endl;
   }
-
-  const void playMedia() {system(("mpv " +getObjPath() +"&").c_str());}
 };
 
 #endif
