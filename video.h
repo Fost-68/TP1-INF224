@@ -56,18 +56,23 @@ public:
   video(string _name, string _path, int _duree) : multimedia(_name, _path), duree(_duree) {}
 
   /**
+  * \brief \b Destructeur d'une video
+  */
+  virtual ~video() {};
+
+  /**
   * \brief \b Getter de la duree d'une video
   * \return Un \e int contenant la duree de la video en secondes
   *
   */
-  int getLength() const {return duree;}
+  int getDuree() const {return duree;}
 
   /**
   * \brief \b Setter de la duree d'une video
   * \param _duree La nouvelle duree de la video
   *
   */
-  void setLength(int _duree) {duree = _duree;}
+  void setDuree(int _duree) {duree = _duree;}
 
   //TODO
   /**
@@ -78,7 +83,7 @@ public:
   virtual const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
     <<"path :" << getObjPath() <<'\n'
     << "type : Video\n"
-    << "duree :" << getLength() <<'\n'
+    << "duree :" << getDuree() <<'\n'
     << "---------------------------"
     <<endl;}
 

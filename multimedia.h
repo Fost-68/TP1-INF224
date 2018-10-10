@@ -59,13 +59,13 @@ public:
      * \brief      Getter du nom du fichier multimedia
      * \return     Un \e string contenant le nom du fichier multimedia
      */
-    const string getObjName() {return name;}
+    string getObjName() const {return name;}
 
     /**
      * \brief      Getter du chemin absolu vers le multimedia
      * \return     Un \e string contenant le chemin absolu vers le multimedia
      */
-    const string getObjPath() {return path;}
+    string getObjPath() const {return path;}
 
     /**
     *  \brief     Setter du nom de l'objet multimedia

@@ -58,6 +58,11 @@ public:
   photo(string _name, string _path, int _la, int _lo) : multimedia(_name, _path), latitude(_la), longitude(_lo) {}
 
   /**
+  * \brief \b Destructeur d'une photo
+  */
+  virtual ~photo() {};
+
+  /**
   * \brief \b Getter de la latitude d'une photo
   * \return Un \e int contenant la latitude d'une photo
   */

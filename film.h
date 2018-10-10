@@ -70,7 +70,6 @@ private:
     }
   }
 
-
 public:
 
   /**
@@ -101,9 +100,12 @@ public:
     setChapters(_t, _nc);
   }
 
+  /**
+  * \brief \b Destructeur d'un film
+  */
   ~film(){
     free(tab_durees);
-    tab_duree = NULL;
+    tab_durees = NULL;
   }
 
   /**
@@ -137,7 +139,7 @@ public:
   const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
     <<"path :" << getObjPath() <<'\n'
     << "type : Film\n"
-    << "duree :" << getLength() <<'\n'
+    << "duree :" << getDuree() <<'\n'
     << "---------------------------";
 
     for(int i = 0; i < getChapters(); i++){
@@ -145,6 +147,15 @@ public:
       << getLength()[i] <<"\n";
     }
     output << endl;}
+
+  film(const film& from){
+    film(from.getObjName(), from.getObjPath(), from.getDuree(), from.getLength(), from.getChapters());
+  }
+
+  film& operator=(const film& from){
+    return &film(from);
+  }
+
 };
 
 #endif
