@@ -1,0 +1,67 @@
+#ifndef GROUPE_H
+#define GROUPE_H
+
+#include <list>
+/**
+ * \file      groupe.h
+ * \author    WILME
+ * \date      11 Octobre 2018
+ * \brief     Header declarant l'objet groupe
+ *
+ * \details  Ce fichier header contient les declarations des attributs et des
+ *           fonctions de l'objet groupe
+ */
+
+ /**
+ *  \class groupe
+ *  \extends list<>
+ *  \brief Classe representant une liste de multimedia
+ *
+ *  La classe groupe nous permet de representer une liste d'objet derivant de
+ *  l'objet de base multimedia. Cette liste utilise le template list pour
+ *  faciliter l'acces a certaines fonctions deja implementees dans le template
+ */
+class groupe : public list<multimedia>
+
+private:
+  string name; /*! Le nom du groupe */
+
+public:
+  /**
+  * \brief         Constructeur blank pour un groupe
+  * \details       Constructeur donnant un nom vide au groupe et ne mettant aucun
+  *                element dans la liste
+  */
+  groupe() {name = "";}
+
+  /**
+  * \brief         Constructeur semi-complet pour un groupe
+  * \details       Constructeur donnant un nom personnalise au groupe, et ne donnant
+  *                aucun multimedia a mettre de base dans la liste
+  */
+  groupe(string _name) {name = _name;}
+
+
+  /**
+  * \brief       Destructeur de multimedia
+  */
+  ~groupe(){
+
+  }
+
+  /**
+   * \brief      Getter du nom du groupe
+   * \return     Un \e string contenant le nom du groupe
+   */
+  string getName(void) const {return name;}
+
+  /**
+  *  \brief     Setter du nom du groupe
+  *  \param _name Le nouveau nom du groupe
+  *
+  */
+  string setName(string _name) {name = _name;}
+
+
+
+#endif
