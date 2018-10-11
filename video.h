@@ -13,7 +13,7 @@ using namespace std;
  * \brief     Header declarant et implementant l'objet video
  *
  * \details  Ce fichier header contient les declarations et les implementations
- *           des attributs et des fonction de l'objet video
+ *           des attributs et des fonctions de l'objet video
  */
 
 /**
