@@ -9,5 +9,6 @@ using namespace std;
 #include "video.h"
 #include "photo.h"
 #include "film.h"
+#include "groupe.h"
 
 #endif
