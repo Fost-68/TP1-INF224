@@ -63,17 +63,17 @@ public:
   *  \param _name Le nouveau nom du groupe
   *
   */
-  string setName(string _name) {name = _name;}
+  void setName(string _name) {name = _name;}
 
   /**
   * \brief       Afficheur de tous les objets du groupe
   *
   * Appeler cette fonction va afficher dans la console les attributs de tous les
-  * multimedias du groupe en faisant appel a la fonction \e printMedia() 
+  * multimedias du groupe en faisant appel a la fonction \e printMedia()
   */
-  void printGroup() const{
-    for(auto & it : this){
-      it->printMedia();
+  void printGroup(ostream& output){
+    for(iterator Iter = this->begin(); Iter != this->end(); Iter++){
+      (*Iter)->printMedia(output);
     }
   }
 
