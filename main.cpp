@@ -14,15 +14,28 @@
 int main()
 {
   groupe * testGroup = new groupe("test_group");
+  groupe * testGroup2 = new groupe("test_group2");
   printf("%s\n\n\n", (testGroup->getName()).c_str());
 
-  testGroup->push_back(new photo("photo1", "multi/photo1.jpeg", 100, 100));
-  testGroup->push_back(new video("video1", "multi/video1.mp4", 100));
-  testGroup->push_back(new photo("photo2", "multi/photo2.jpeg", 100, 100));
+  multimedia * m1 = new photo("photo1", "multi/photo1.jpeg", 100, 100);
+  multimedia * m2 = new video("video1", "multi/video1.mp4", 100);
+  multimedia * m3 = new photo("photo2", "multi/photo2.jpeg", 100, 100);
+
+
+  testGroup->push_back(m1);
+  testGroup->push_back(m2);
+  testGroup->push_back(m3);
 
   testGroup->printGroup(cout);
 
   delete(testGroup);
+
+  testGroup2->push_back(m1);
+  testGroup2->push_back(m3);
+
+  testGroup2->printGroup(cout);
+
+  delete(testGroup2);
 
   exit(0);
 }
