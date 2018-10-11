@@ -1,6 +1,10 @@
 #ifndef GROUPE_H
 #define GROUPE_H
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 #include <list>
 /**
  * \file      groupe.h
@@ -21,7 +25,8 @@
  *  l'objet de base multimedia. Cette liste utilise le template list pour
  *  faciliter l'acces a certaines fonctions deja implementees dans le template
  */
-class groupe : public list<multimedia>
+class groupe : public list<multimedia*>
+{
 
 private:
   string name; /*! Le nom du groupe */
@@ -43,11 +48,9 @@ public:
 
 
   /**
-  * \brief       Destructeur de multimedia
+  * \brief       Destructeur de groupe
   */
-  ~groupe(){
-
-  }
+  ~groupe() {}
 
   /**
    * \brief      Getter du nom du groupe
@@ -62,6 +65,18 @@ public:
   */
   string setName(string _name) {name = _name;}
 
+  /**
+  * \brief       Afficheur de tous les objets du groupe
+  *
+  * Appeler cette fonction va afficher dans la console les attributs de tous les
+  * multimedias du groupe en faisant appel a la fonction \e printMedia() 
+  */
+  void printGroup() const{
+    for(auto & it : this){
+      it->printMedia();
+    }
+  }
 
+};
 
 #endif
