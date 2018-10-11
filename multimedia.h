@@ -85,7 +85,7 @@ public:
      * \brief        Permet d'afficher les informations de l'objet multimedia
      * \param output L'endroit où seront affichées ces informations
      */
-    virtual const void printMedia(ostream& output) = 0;
+    virtual void printMedia(ostream& output) const = 0;
 
     /**
      * \brief       Lis le media avec le programme par défaut de l'OS
@@ -95,7 +95,7 @@ public:
     *Question pour le prof, comment avoir une description pour une fonction qui
     *sera défini un peu partout
     */
-    const void playMedia() {system(("mpv " +getObjPath() +"&").c_str());}
+    void playMedia() const {system(("mpv " +getObjPath() +"&").c_str());}
 };
 
 #endif

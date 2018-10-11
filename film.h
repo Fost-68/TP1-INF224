@@ -55,13 +55,13 @@ private:
   * \param _tab_durees le nouveau tableau des durees
   */
   void setLength(int * _tab_durees){
-    if(tab_durees != NULL){
+    if(tab_durees != nullptr){
       free(tab_durees);
-      tab_durees = NULL;
+      tab_durees = nullptr;
     }
 
     tab_durees = (int*)malloc(sizeof(int) * n_chapters);
-    if(tab_durees = NULL){
+    if(tab_durees == nullptr){
       exit(-1);
     }
 
@@ -76,11 +76,11 @@ public:
   * \brief \b Constructeur vide d'un film
   *
   * Constructeur vide d'un film : appelle le constructeur de la classe mère puis
-  * met tous les attributs vers une valeur nulle (pointeur vers NULL et 0 pour
+  * met tous les attributs vers une valeur nulle (pointeur vers nullptr et 0 pour
   * l'entier.
   *
   */
-  film() : tab_durees(NULL), n_chapters(0) {}
+  film() : tab_durees(nullptr), n_chapters(0) {}
 
 
   /**
@@ -105,7 +105,7 @@ public:
   */
   ~film(){
     free(tab_durees);
-    tab_durees = NULL;
+    tab_durees = nullptr;
   }
 
   /**
@@ -136,24 +136,45 @@ public:
       setLength(_tab_durees);
   }
 
-  const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
-    <<"path :" << getObjPath() <<'\n'
-    << "type : Film\n"
-    << "duree :" << getDuree() <<'\n'
-    << "---------------------------";
+  void printMedia(ostream& output) const
+    {
+      output << "name : " << getObjName() <<'\n'
+      <<"path :" << getObjPath() <<'\n'
+      << "type : Film\n"
+      << "duree :" << getDuree() <<'\n'
+      << "---------------------------";
 
-    for(int i = 0; i < getChapters(); i++){
-      output << "Chapter " << (i+1) <<"Length : "
-      << getLength()[i] <<"\n";
+      for(int i = 0; i < getChapters(); i++){
+        output << "Chapter " << (i+1) <<"Length : "
+        << getLength()[i] <<"\n";
+      }
+      output << endl;
     }
-    output << endl;}
 
-  film(const film& from){
-    film(from.getObjName(), from.getObjPath(), from.getDuree(), from.getLength(), from.getChapters());
-  }
+  film(const film& from) : video(from.name, from.path, from.duree),
+    n_chapters(from.n_chapters)
+    {
+      tab_durees = (int*)malloc(n_chapters * sizeof(int));
+      for(int i = 0; i < n_chapters; i++){
+        tab_durees[i] = from.tab_durees[i];
+      }
+    }
 
   film& operator=(const film& from){
-    return &film(from);
+    name = from.name;
+    path = from.path;
+    duree = from.duree;
+    n_chapters = from.n_chapters;
+
+    if(tab_durees != nullptr){
+      free(tab_durees);
+    }
+
+    tab_durees = (int*)malloc(n_chapters * sizeof(int));
+    for(int i = 0; i < n_chapters; i++){
+      tab_durees[i] = from.tab_durees[i];
+    }
+    return *this;
   }
 
 };

@@ -29,7 +29,7 @@ using namespace std;
 */
 class video : public multimedia{
 
-private:
+protected:
   int duree; /*!< La duree de la video */
 
 public:
@@ -80,12 +80,14 @@ public:
   *Question pour le prof, comment avoir une description pour une fonction qui
   *sera défini un peu partout
   */
-  virtual const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
-    <<"path :" << getObjPath() <<'\n'
-    << "type : Video\n"
-    << "duree :" << getDuree() <<'\n'
-    << "---------------------------"
-    <<endl;}
+  virtual void printMedia(ostream& output) const {
+      output << "name : " << getObjName() <<'\n'
+      <<"path :" << getObjPath() <<'\n'
+      << "type : Video\n"
+      << "duree :" << getDuree() <<'\n'
+      << "---------------------------"
+      <<endl;
+    }
 
 
 };

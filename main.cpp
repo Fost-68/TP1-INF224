@@ -11,7 +11,7 @@
  *            permet d'effectuer des tests au fur et à mesure que nous écrivons
  *            du code.
  */
-int main(int argc, const char* argv[])
+int main()
 {
   int tab_size = 3;
   multimedia ** multi_tab = (multimedia**)malloc(tab_size*sizeof(multimedia*));
@@ -27,7 +27,7 @@ int main(int argc, const char* argv[])
   }
 
   free(multi_tab);
-  multi_tab = NULL;
+  multi_tab = nullptr;
 
   exit(0);
 }

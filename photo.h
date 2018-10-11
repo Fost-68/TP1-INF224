@@ -86,7 +86,8 @@ public:
   */
   void setLongitude(int _longitude) {longitude = _longitude;}
 
-  const void printMedia(ostream& output){output << "name : " << getObjName() <<'\n'
+  void printMedia(ostream& output) const {
+    output << "name : " << getObjName() <<'\n'
     <<"path :" << getObjPath() <<'\n'
     << "type : Video\n"
     << "latitude :" << getLatitude() <<'\n'
