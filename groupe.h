@@ -3,7 +3,10 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
+
 using namespace std;
+typedef std::shared_ptr<multimedia> multiPtr;
 
 #include <list>
 /**
@@ -21,11 +24,11 @@ using namespace std;
  *  \extends list<>
  *  \brief Classe representant une liste de multimedia
  *
- *  La classe groupe nous permet de representer une liste d'objet derivant de
+ *  La classe groupe nous permet de representer une liste de shared_ptr d'objet derivant de
  *  l'objet de base multimedia. Cette liste utilise le template list pour
  *  faciliter l'acces a certaines fonctions deja implementees dans le template
  */
-class groupe : public list<multimedia*>
+class groupe : public list<multiPtr>
 {
 
 private:
@@ -76,7 +79,7 @@ public:
       (*Iter)->printMedia(output);
     }
   }
-
+  
 };
 
 #endif
