@@ -34,7 +34,6 @@ protected:
   string name; /*!< Le nom du fichier multimedia */
   string path; /*!< Le chemin absolue vers le fichier multimedia */
 
-public:
   /**
    * \brief         Constructeur blank pour un multimedia
    * \details       Constructeur mettant tous les attributs de l'objet à 0
@@ -53,6 +52,9 @@ public:
     * \brief       Destructeur de multimedia
     */
     virtual ~multimedia() {};
+
+public:
+
 
 
     /**

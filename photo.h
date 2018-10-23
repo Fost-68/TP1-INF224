@@ -33,15 +33,6 @@ private:
   int latitude; /*!< La latitude de l'image */
   int longitude; /*!< La longitude de l'image */
 
-public:
-
-  /**
-  * \brief \b Constructeur vide de video
-  *
-  * Constructeur vide d'une video : appelle le constructeur vide de la classe mère puis
-  * met la lontitude et la longitude de la photo à 0.
-  *
-  */
   photo() : latitude(0), longitude(0) {}
 
   /**
@@ -61,6 +52,17 @@ public:
   * \brief \b Destructeur d'une photo
   */
   virtual ~photo() {};
+
+public:
+
+  /**
+  * \brief \b Constructeur vide de video
+  *
+  * Constructeur vide d'une video : appelle le constructeur vide de la classe mère puis
+  * met la lontitude et la longitude de la photo à 0.
+  *
+  */
+
 
   /**
   * \brief \b Getter de la latitude d'une photo

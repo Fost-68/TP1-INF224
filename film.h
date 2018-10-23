@@ -29,7 +29,7 @@ using namespace std;
 *  nombre de chapitres et par la durée de chacun de ses chapitres
 */
 class film : public video{
-private:
+protected:
   int * tab_durees; /*!< Le tableau des différentes durées. */
   int n_chapters; /*!< Le nombre de chapitre du film */
 
@@ -70,8 +70,6 @@ private:
     }
   }
 
-public:
-
   /**
   * \brief \b Constructeur vide d'un film
   *
@@ -107,6 +105,10 @@ public:
     free(tab_durees);
     tab_durees = nullptr;
   }
+
+
+public:
+
 
   /**
   * \brief \b Getter du pointeur vers le tableau de la durée des chapitres

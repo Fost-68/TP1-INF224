@@ -34,7 +34,6 @@ class groupe : public list<multiPtr>
 private:
   string name; /*! Le nom du groupe */
 
-public:
   /**
   * \brief         Constructeur blank pour un groupe
   * \details       Constructeur donnant un nom vide au groupe et ne mettant aucun
@@ -48,6 +47,8 @@ public:
   *                aucun multimedia a mettre de base dans la liste
   */
   groupe(string _name) {name = _name;}
+
+public:
 
 
   /**

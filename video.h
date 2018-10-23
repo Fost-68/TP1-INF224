@@ -32,8 +32,6 @@ class video : public multimedia{
 protected:
   int duree; /*!< La duree de la video */
 
-public:
-
   /**
   * \brief \b Constructeur vide de video
   *
@@ -60,6 +58,7 @@ public:
   */
   virtual ~video() {};
 
+public:
   /**
   * \brief \b Getter de la duree d'une video
   * \return Un \e int contenant la duree de la video en secondes

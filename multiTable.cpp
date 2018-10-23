@@ -2,6 +2,8 @@
 
 class multiTable{
 
+friend 
+
 private:
   Dict multiDict;
   Dict goupDict;
@@ -15,7 +17,7 @@ public:
     multiDict[string] = multiPtr;
   }
 
-  void addGroup(string, groupPtr){
+  void addGroup(string groupPtr){
     groupDict[string] = groupPtr;
   }
 
