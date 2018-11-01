@@ -4,14 +4,32 @@ import javax.swing.*;
 import java.awt.*;
 
 
-
+/**
+ * @author WILME
+ *
+ * This object represents a JFrame containing a TextPanel and a ButtonPanel
+ *
+ * @see ButtonPanel
+ * @see TextPanel
+ */
 public final class Frame extends JFrame{
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * <i>TextPanel</i> : The TextPanel of the Frame
+     */
     private TextPanel textPanel;
+
+    /**
+     * <i>ButtonPanel</i> : The ButtonPanel of the Frame
+     */
     private ButtonPanel buttonPanel;
 
+    /**
+     * <b>Constructor</b> : This constructs the textPanel and the JPanel, create a new layout for the current frame, and
+     * sets up the usual settings of JFrame such as the size, the default close operation and so on...
+     */
     public Frame(){
         textPanel = new TextPanel();
         buttonPanel = new ButtonPanel(textPanel);
