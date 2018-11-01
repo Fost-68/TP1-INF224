@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ButtonPanel extends JPanel{
+public final class ButtonPanel extends JPanel{
 	
 	private JButton b1, b2, b3;
 	private TextPanel textPanel;
@@ -21,35 +21,27 @@ public class ButtonPanel extends JPanel{
 		
 		b1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				textPanel.printText("C'est le bouton 1 \n");
 			}
 		});
 		
 		b2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				textPanel.printText("C'est le bouton 2 \n");
 			}
 		});
 		
 		b3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				System.exit(1);
 			}
 		});
 		
 		this.setLayout(new GridLayout(1,3));
+
+		this.add(b1);
+		this.add(b2);
+		this.add(b3);
 	}
 
-}
-
-class AddLine1Listenener implements ActionListener {
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		
-	}
-	
 }
