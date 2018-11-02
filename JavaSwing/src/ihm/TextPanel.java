@@ -41,6 +41,6 @@ public final class TextPanel extends JPanel{
      * @param msg <i>String</i> : Message to display in the Text Area
      */
 	public void printText(String msg){
-	    textArea.append(msg);
+	    textArea.append(msg + "\n");
 	}
 }
