@@ -1,15 +1,15 @@
 package ihm;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
 
 
 /**
  * @author WILME
  *
- * This object represents a JFrame containing a TextPanel and a ButtonPanel
+ * This object represents a JFrame containing a TextPanel and a ToolbarPanel
  *
- * @see ButtonPanel
+ * @see ToolbarPanel
  * @see TextPanel
  */
 public final class Frame extends JFrame{
@@ -22,26 +22,33 @@ public final class Frame extends JFrame{
     private TextPanel textPanel;
 
     /**
-     * <i>ButtonPanel</i> : The ButtonPanel of the Frame
+     * <i>ToolbarPanel</i> : The ToolbarPanel of the Frame
      */
-    private ButtonPanel buttonPanel;
+    private ToolbarPanel toolbarPanel;
+
+    private MyMenuBar myMenuBar;
 
     /**
      * <b>Constructor</b> : This constructs the textPanel and the JPanel, create a new layout for the current frame, and
      * sets up the usual settings of JFrame such as the size, the default close operation and so on...
      */
     public Frame(){
+
         textPanel = new TextPanel();
-        buttonPanel = new ButtonPanel(textPanel);
+        Actions.setActions(textPanel);
+        toolbarPanel = new ToolbarPanel();
+        myMenuBar = new MyMenuBar();
 
         this.setSize(400, 250);
         this.setLayout(new BorderLayout());
 
         this.add(textPanel, BorderLayout.CENTER);
-        this.add(buttonPanel, BorderLayout.NORTH);
+        this.add(toolbarPanel, BorderLayout.NORTH);
 
-        this.setResizable(false);
+        this.setJMenuBar(myMenuBar);
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
 }
