@@ -22,8 +22,8 @@ public final class ToolbarPanel extends JPanel{
 	private JButton b1, b2, b3;
 
     /**
-     * <b>Constructor</b> : Constructs the buttonPanel by creating three Jbuttons, by setting for those all three buttons
-     * an action and finally, placing the thre buttons following a grid layout of 3 lines and 2 rows.
+     * <b>Constructor</b> : Constructs the buttonPanel by creating three Jbuttons, setting for each of the a specific
+	 * action an action and finally, placing the three buttons following a grid layout of 3 lines and 2 rows.
      *
      */
 	public ToolbarPanel() {
