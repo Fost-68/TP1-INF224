@@ -6,6 +6,8 @@
 #include <string>
 using namespace std;
 
+#include "multiTable.h"
+
 /**
  * \file      photo.h
  * \author    WILME
@@ -29,7 +31,12 @@ using namespace std;
 *  longitude.
 */
 class photo : public multimedia{
+
+
+
 private:
+  friend class multiTable;
+
   int latitude; /*!< La latitude de l'image */
   int longitude; /*!< La longitude de l'image */
 
@@ -48,12 +55,13 @@ private:
   */
   photo(string _name, string _path, int _la, int _lo) : multimedia(_name, _path), latitude(_la), longitude(_lo) {}
 
-  /**
-  * \brief \b Destructeur d'une photo
-  */
-  virtual ~photo() {};
 
 public:
+
+    /**
+    * \brief \b Destructeur d'une photo
+    */
+    virtual ~photo() {};
 
   /**
   * \brief \b Constructeur vide de video
