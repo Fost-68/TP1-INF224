@@ -20,7 +20,6 @@ public class Client {
     public String send(String request) {
         // Envoyer la requete au serveur
         try {
-            request += "\n";  // ajouter le separateur de lignes
             output.write(request, 0, request.length());
             output.flush();
         }

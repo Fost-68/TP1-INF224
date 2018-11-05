@@ -158,7 +158,7 @@ public:
         output << "Chapter " << (i+1) <<"Length : "
         << getLength()[i] <<"\n";
       }
-      output << "|";
+      output << "$";
     }
 
   film(const film& from) : video(from.name, from.path, from.duree),

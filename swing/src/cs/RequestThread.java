@@ -16,11 +16,12 @@ public class RequestThread extends Thread{
         String request = "";
 
         while(true){
+            request = "";
             request = panel.getOutputText().replace("Command > ", "");
 
             if(request.length() > 0) {
                 if (request.charAt(request.length() - 1) == '\n') {
-                    panel.printInputText(("Sending : " + request).replace("\n", ""));
+                    panel.printInputText("Sending :\n\t " + (request.replace("\n", "")));
                     panel.clearOutputText();
                     processReply(client.send(request));
                 }
@@ -34,8 +35,7 @@ public class RequestThread extends Thread{
 
     private void processReply(String reply){
         System.out.println(reply);
-        reply.replace("|", "\n");
-        panel.printInputText("Received : " +reply);
+        panel.printInputText(("Received :\n\t " +reply).replace("$", "\n"));
         panel.printInputText("\n");
     }
 }

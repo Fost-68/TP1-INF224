@@ -28,12 +28,19 @@ public final class TextPanel extends JPanel{
 	public TextPanel() {
 	    this.setLayout(new BorderLayout());
 
+	    JPanel commandPanel = new JPanel();
+        commandPanel.setLayout(new GridLayout(1,2));
+        JTextArea
+
+
 	    inputTextArea = new JTextArea();
 		inputTextArea.setEditable(false);
 	    inputTextArea.setSize(200, 200);
 
 		outputTextArea = new JTextArea();
 		outputTextArea.setSize(30,200);
+
+		this.clearOutputText();
 
 
         JScrollPane scroller = new JScrollPane(inputTextArea);
@@ -51,6 +58,7 @@ public final class TextPanel extends JPanel{
      */
 	public void printInputText(String msg){
 		inputTextArea.append(msg + "\n");
+        inputTextArea.setCaretPosition(inputTextArea.getText().length());
 	}
 
     /**

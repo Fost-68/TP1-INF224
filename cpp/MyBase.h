@@ -79,7 +79,7 @@ public:
     //   ils servent à délimiter les messages entre le serveur et le client
 
     //AVANT d'ENVOYER, NE PAS OUBLIER DE REMPLACER LES \n PAR DES |
-    replace(response.begin(), response.end(), '\n', '|');
+    replace(response.begin(), response.end(), '\n', '$');
     cerr << "response: " << response << endl;
 
     // renvoyer false si on veut clore la connexion avec le client

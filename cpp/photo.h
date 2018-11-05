@@ -103,7 +103,7 @@ public:
     << "latitude :" << getLatitude() <<'\n'
     << "longitude :" << getLongitude() <<'\n'
     << "---------------------------"
-    << "|";
+    << "$";
   }
 };
 
