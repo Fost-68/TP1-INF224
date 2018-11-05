@@ -3,6 +3,8 @@ package ihm;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author WILME
@@ -11,14 +13,16 @@ import javax.swing.JMenuItem;
  */
 public class MyMenuBar extends JMenuBar{
 
+    private Frame frame;
+
     /**
      * <b>Constructor</b> : Creates the Menu bar, add all 3 MyMenu to it and set itself visible
      *
      * @see Menu
      */
-    public MyMenuBar(){
-        this.add(new Menu("?"));
-
+    public MyMenuBar(Frame frame){
+        this.add(new Menu("?", frame));
+        this.frame = frame;
         this.setVisible(true);
     }
 }
@@ -36,9 +40,19 @@ class Menu extends JMenu{
      *
      * @param menuName
      */
-    public Menu(String menuName){
+    public Menu(String menuName, Frame frame) {
         super(menuName);
-        this.add(new JMenuItem("Help"));
+        JMenuItem jmi = new JMenuItem("Help");
+
+        jmi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new HelpDialog(frame);
+            }
+        });
+
+        this.add(jmi);
+
     }
 
 }

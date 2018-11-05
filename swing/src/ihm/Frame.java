@@ -44,7 +44,7 @@ public final class Frame extends JFrame{
 
         textPanel = new TextPanel();
         toolbarPanel = new ToolbarPanel(textPanel);
-        myMenuBar = new MyMenuBar();
+        myMenuBar = new MyMenuBar(this);
 
         try {
             client = new Client();
@@ -53,7 +53,7 @@ public final class Frame extends JFrame{
             System.exit(-1);
         }
 
-        rt = new RequestThread(textPanel, client);
+        rt = new RequestThread(textPanel, client, toolbarPanel);
         rt.start();
 
         this.setSize(800, 400);

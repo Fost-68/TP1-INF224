@@ -65,9 +65,7 @@ public final class ToolbarPanel extends JPanel{
 	    bg.add(r2);
 	    bg.add(r3);
 
-        String initcb [] ={"", "video1", "photo1", "photo2"};
-
-	    cBox = new JComboBox(initcb);
+	    cBox = new JComboBox();
 	    cBox.addActionListener(Actions.getAction(3));
 
 	    pleaseButton = new JButton("Please");
