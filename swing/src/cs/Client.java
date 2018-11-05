@@ -2,7 +2,6 @@ package cs;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Client {
     private static final long serialVersionUID = 1L;
