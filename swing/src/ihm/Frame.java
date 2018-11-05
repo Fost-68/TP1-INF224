@@ -43,8 +43,7 @@ public final class Frame extends JFrame{
     public Frame(){
 
         textPanel = new TextPanel();
-        Actions.setActions(textPanel);
-        toolbarPanel = new ToolbarPanel();
+        toolbarPanel = new ToolbarPanel(textPanel);
         myMenuBar = new MyMenuBar();
 
         try {
@@ -57,13 +56,15 @@ public final class Frame extends JFrame{
         rt = new RequestThread(textPanel, client);
         rt.start();
 
-        this.setSize(400, 250);
+        this.setSize(800, 400);
         this.setLayout(new BorderLayout());
 
         this.add(textPanel, BorderLayout.CENTER);
         this.add(toolbarPanel, BorderLayout.NORTH);
 
         this.setJMenuBar(myMenuBar);
+
+        this.setResizable(false);
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);

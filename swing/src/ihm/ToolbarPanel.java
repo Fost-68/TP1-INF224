@@ -32,23 +32,29 @@ public final class ToolbarPanel extends JPanel{
     /**
      * <i>JButton</i>
      */
-    private JButton pleaseButton;
+    private JButton pleaseButton, clearButton;
 
     /**
      * <b>Constructor</b> : Constructs the buttonPanel by creating three Jbuttons, setting for each of the a specific
 	 * action an action and finally, placing the three buttons following a grid layout of 3 lines and 2 rows.
      *
      */
-	public ToolbarPanel() {
+	public ToolbarPanel(TextPanel textPanel) {
 
-	    this.setLayout(new GridLayout(1,3));
+	    this.setLayout(new GridLayout(1,4));
 	    JPanel requestPanel = new JPanel();
 	    requestPanel.setLayout(new GridLayout(3,1));
 
+        Actions.setActions(textPanel, this);
 
 	    r1 = new JRadioButton("Play");
+	    r1.addActionListener(Actions.getAction(3));
+
 	    r2 = new JRadioButton("Print");
+	    r2.addActionListener(Actions.getAction(3));
+
 	    r3 = new JRadioButton("Fetch");
+	    r3.addActionListener(Actions.getAction(3));
 
 	    requestPanel.add(r1);
 	    requestPanel.add(r2);
@@ -59,14 +65,21 @@ public final class ToolbarPanel extends JPanel{
 	    bg.add(r2);
 	    bg.add(r3);
 
-	    cBox = new JComboBox();
+        String initcb [] ={"", "video1", "photo1", "photo2"};
+
+	    cBox = new JComboBox(initcb);
+	    cBox.addActionListener(Actions.getAction(3));
 
 	    pleaseButton = new JButton("Please");
+	    pleaseButton.addActionListener(Actions.getAction(4));
+
+	    clearButton = new JButton("Clear");
+	    clearButton.addActionListener(Actions.getAction(5));
 
 	    this.add(requestPanel);
 	    this.add(cBox);
-	    this.add 
-
+	    this.add(pleaseButton);
+	    this.add(clearButton);
 	}
 
 	public void setJComboBox(String [] fetchResult){
@@ -74,10 +87,33 @@ public final class ToolbarPanel extends JPanel{
 	    for(String s : fetchResult){
 	        cBox.addItem(s);
         }
+        cBox.addActionListener(Actions.getAction(4));
     }
 
+    public int getSelectedRadio(){
+	    if(r1.isSelected()){
+	        return 1;
+        }
 
+        else if(r2.isSelected()){
+	        return 2;
+        }
 
+        else if(r3.isSelected()){
+	        return 3;
+        }
 
+        else{
+	        return 0;
+        }
+    }
 
+    public String getSelectedMulti(){
+
+        if(cBox.getSelectedItem() == null){
+            return "";
+        }
+
+        return (String)cBox.getSelectedItem();
+    }
 }

@@ -1,6 +1,8 @@
 package cs;
 
+import ihm.Actions;
 import ihm.TextPanel;
+import ihm.ToolbarPanel;
 
 /**
  *
@@ -16,14 +18,17 @@ public class RequestThread extends Thread{
      */
     private Client client;
 
+    private ToolbarPanel toolbarPanel;
+
     /**
      *
      * @param panel
      * @param client
      */
-    public RequestThread(TextPanel panel, Client client){
+    public RequestThread(TextPanel panel, Client client, ToolbarPanel toolbarPanel){
         this.panel = panel;
         this.client = client;
+        this.toolbarPanel = toolbarPanel;
     }
 
     @Override
@@ -37,11 +42,9 @@ public class RequestThread extends Thread{
                 request = "";
             }
 
-            System.out.println(request);
-
             if(request.length() > 0) {
                 if (request.endsWith("\n")) {
-                    panel.printInputText("Sending :\t " + (request.replace("\n", "")));
+                    panel.printInputText("Sent :\t " + (request.replace("\n", "")));
                     panel.clearOutputText();
                     processReply(client.send(request));
                 }
@@ -60,5 +63,14 @@ public class RequestThread extends Thread{
      */
     private void processReply(String reply){
         panel.printInputText(("Received :\n\t " +reply).replace("$", "\n\t"));
+        panel.printInputText("\n-------------------------------------\n");
+
+        if(reply.contains("fetch")){
+            String[] splitReply = reply.split(" ");
+            splitReply[0] = "";
+
+            toolbarPanel.setJComboBox(splitReply);
+        }
+
     }
 }

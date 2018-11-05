@@ -72,13 +72,19 @@ public final class TextPanel extends JPanel{
         outputTextArea.setText("");
 	}
 
-    /**
+
+	public void setOutputText(String msg){
+	    outputTextArea.setText(msg);
+    }
+	/**
      *
      * @param msg
      */
 	public void printOutputText(String msg){
         outputTextArea.append(msg);
     }
+
+
 
     public String getOutputText(){
 		return outputTextArea.getText();
