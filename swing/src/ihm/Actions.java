@@ -180,3 +180,13 @@ class Action3 extends AbstractAction{
         System.exit(1);
     }
 }
+
+class Action4 extends AbstractAction{
+
+    private
+
+    @Override
+    public final void actionPerformed(ActionEvent actionEvent){
+
+    }
+}

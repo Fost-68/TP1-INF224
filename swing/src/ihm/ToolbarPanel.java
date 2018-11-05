@@ -1,9 +1,7 @@
 package ihm;
 
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author WILME
@@ -17,9 +15,24 @@ public final class ToolbarPanel extends JPanel{
     private static final long serialVersionUID = 1L;
 
     /**
-     * <i>JButton(s)</i> : the three JButton of this panel
+     * <i>JRadioButtons</i>
      */
-	private JButton b1, b2, b3;
+    private JRadioButton r1, r2, r3;
+
+    /**
+     * <i>JComboBox</i>
+     */
+    private JComboBox cBox;
+
+    /**
+     * <i>ButtonGroup</i>
+     */
+    private ButtonGroup bg;
+
+    /**
+     * <i>JButton</i>
+     */
+    private JButton pleaseButton;
 
     /**
      * <b>Constructor</b> : Constructs the buttonPanel by creating three Jbuttons, setting for each of the a specific
@@ -28,15 +41,43 @@ public final class ToolbarPanel extends JPanel{
      */
 	public ToolbarPanel() {
 
-	    b1 = new JButton(Actions.getAction(Actions.PRINT_LINE_1));
-		b2 = new JButton(Actions.getAction(Actions.PRINT_LINE_2));
-		b3 = new JButton(Actions.getAction(Actions.EXIT));
+	    this.setLayout(new GridLayout(1,3));
+	    JPanel requestPanel = new JPanel();
+	    requestPanel.setLayout(new GridLayout(3,1));
 
-		this.setLayout(new GridLayout(1,3));
 
-		this.add(b1);
-		this.add(b2);
-		this.add(b3);
+	    r1 = new JRadioButton("Play");
+	    r2 = new JRadioButton("Print");
+	    r3 = new JRadioButton("Fetch");
+
+	    requestPanel.add(r1);
+	    requestPanel.add(r2);
+	    requestPanel.add(r3);
+
+	    bg = new ButtonGroup();
+	    bg.add(r1);
+	    bg.add(r2);
+	    bg.add(r3);
+
+	    cBox = new JComboBox();
+
+	    pleaseButton = new JButton("Please");
+
+	    this.add(requestPanel);
+	    this.add(cBox);
+	    this.add 
+
 	}
+
+	public void setJComboBox(String [] fetchResult){
+	    cBox.removeAllItems();
+	    for(String s : fetchResult){
+	        cBox.addItem(s);
+        }
+    }
+
+
+
+
 
 }

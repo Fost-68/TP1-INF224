@@ -2,15 +2,30 @@ package cs;
 
 import ihm.TextPanel;
 
+/**
+ *
+ */
 public class RequestThread extends Thread{
-
+    /**
+     *
+     */
     private TextPanel panel;
+
+    /**
+     *
+     */
     private Client client;
 
+    /**
+     *
+     * @param panel
+     * @param client
+     */
     public RequestThread(TextPanel panel, Client client){
         this.panel = panel;
         this.client = client;
     }
+
     @Override
     public void run() {
         String request = "";
@@ -30,7 +45,6 @@ public class RequestThread extends Thread{
                     panel.clearOutputText();
                     processReply(client.send(request));
                 }
-
             }
             try {
                 Thread.sleep(100);
@@ -40,6 +54,10 @@ public class RequestThread extends Thread{
         }
     }
 
+    /**
+     *
+     * @param reply
+     */
     private void processReply(String reply){
         panel.printInputText(("Received :\n\t " +reply).replace("$", "\n\t"));
     }
