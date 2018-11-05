@@ -86,12 +86,12 @@ class Action1 extends AbstractAction{
     /**
      * The text to be displayed on every components related to this action
      */
-    private static final String text = "Action 1";
+    private static final String text = "Play";
 
     /**
      * The text to append in the JTextArea
      */
-    private static final String msg ="C'est le bouton 1";
+    private static final String msg ="play ";
 
     /**
      * The TextPanel where the message associated with this action will be displayed
@@ -110,8 +110,9 @@ class Action1 extends AbstractAction{
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        textPanel.printText(msg);
+    public void actionPerformed(ActionEvent actionEvent){
+        textPanel.clearOutputText();
+        textPanel.printOutputText(msg);
     }
 }
 
@@ -125,12 +126,12 @@ class Action2 extends AbstractAction{
     /**
      * The text to be displayed on every components related to this action
      */
-    private static final String text = "Action 2";
+    private static final String text = "Print";
 
     /**
      * The text to append in the JTextArea
      */
-    private static final String msg = "C'est le bouton 2";
+    private static final String msg = "print ";
 
     /**
      * The TextPanel where the message associated with this action will be displayed
@@ -150,7 +151,8 @@ class Action2 extends AbstractAction{
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        textPanel.printText(msg);
+        textPanel.clearOutputText();
+        textPanel.printOutputText(msg);
     }
 }
 

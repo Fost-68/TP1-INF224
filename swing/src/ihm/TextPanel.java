@@ -1,6 +1,7 @@
 package ihm;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -25,7 +26,7 @@ public final class TextPanel extends JPanel{
      * Place the Component following a BorderLayout
      */
 	public TextPanel() {
-	    this.setLayout(new GridLayout(2,1));
+	    this.setLayout(new BorderLayout());
 
 	    inputTextArea = new JTextArea();
 		inputTextArea.setEditable(false);
@@ -38,8 +39,9 @@ public final class TextPanel extends JPanel{
         JScrollPane scroller = new JScrollPane(inputTextArea);
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
+        this.add(outputTextArea, BorderLayout.NORTH);
 		this.add(scroller, BorderLayout.CENTER);
-		this.add(outputTextArea, BorderLayout.NORTH);
+
 	}
 
     /**
@@ -54,8 +56,8 @@ public final class TextPanel extends JPanel{
     /**
      *
      */
-	public void ClearOutputText(){
-        outputTextArea.setText(">");
+	public void clearOutputText(){
+        outputTextArea.setText("Command > ");
 	}
 
     /**
@@ -65,5 +67,9 @@ public final class TextPanel extends JPanel{
 	public void printOutputText(String msg){
         outputTextArea.append(msg);
     }
+
+    public String getOutputText(){
+		return outputTextArea.getText();
+	}
 
 }

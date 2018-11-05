@@ -15,7 +15,28 @@ public class Client {
         sock = new Socket(DEFAULT_HOST, DEFAULT_PORT);
         input = new BufferedReader(new InputStreamReader(sock.getInputStream()));
         output = new BufferedWriter(new OutputStreamWriter(sock.getOutputStream()));
+    }
 
+    public String send(String request) {
+        // Envoyer la requete au serveur
+        try {
+            request += "\n";  // ajouter le separateur de lignes
+            output.write(request, 0, request.length());
+            output.flush();
+        }
+        catch (java.io.IOException e) {
+            System.err.println("Client: Couldn't send message: " + e);
+            return null;
+        }
 
+        // Recuperer le resultat envoye par le serveur
+        try {
+            return input.readLine();
+        }
+        catch (java.io.IOException e) {
+            System.err.println("Client: Couldn't receive message: " + e);
+            return null;
+        }
     }
 }
+
