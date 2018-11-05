@@ -4,6 +4,8 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+
+#include "multiTable.h"
 using namespace std;
 
 /**
@@ -29,9 +31,41 @@ using namespace std;
 *  nombre de chapitres et par la durée de chacun de ses chapitres
 */
 class film : public video{
+
+
+
 protected:
+  friend class multiTable;
   int * tab_durees; /*!< Le tableau des différentes durées. */
   int n_chapters; /*!< Le nombre de chapitre du film */
+
+  /**
+  * \brief \b Constructeur vide d'un film
+  *
+  * Constructeur vide d'un film : appelle le constructeur de la classe mère puis
+  * met tous les attributs vers une valeur nulle (pointeur vers nullptr et 0 pour
+  * l'entier.
+  *
+  */
+  film() : tab_durees(nullptr), n_chapters(0) {}
+
+
+  /**
+  * \brief \b Constructeur complet d'une video
+  *
+  * Constructeur complet d'une video permettant de personnaliser tous ses attributs
+  * a la creation
+  *
+  * \param _name Le nom de l'objet video
+  * \param _path Le chemin relatif ou absolu vers la video
+  * \param _duree La duree de la video
+  * \param _t Pointeur vers le tableau des durees des chapitres
+  * \param _nc Le nombre de chapitre
+  */
+  film(string _name, string _path, int _duree, int * _t, int _nc){
+    video(_name,_path,_duree);
+    setChapters(_t, _nc);
+  }
 
   /**
   *
@@ -70,33 +104,10 @@ protected:
     }
   }
 
-  /**
-  * \brief \b Constructeur vide d'un film
-  *
-  * Constructeur vide d'un film : appelle le constructeur de la classe mère puis
-  * met tous les attributs vers une valeur nulle (pointeur vers nullptr et 0 pour
-  * l'entier.
-  *
-  */
-  film() : tab_durees(nullptr), n_chapters(0) {}
 
 
-  /**
-  * \brief \b Constructeur complet d'une video
-  *
-  * Constructeur complet d'une video permettant de personnaliser tous ses attributs
-  * a la creation
-  *
-  * \param _name Le nom de l'objet video
-  * \param _path Le chemin relatif ou absolu vers la video
-  * \param _duree La duree de la video
-  * \param _t Pointeur vers le tableau des durees des chapitres
-  * \param _nc Le nombre de chapitre
-  */
-  film(string _name, string _path, int _duree, int * _t, int _nc){
-    video(_name,_path,_duree);
-    setChapters(_t, _nc);
-  }
+
+public:
 
   /**
   * \brief \b Destructeur d'un film
@@ -105,9 +116,6 @@ protected:
     free(tab_durees);
     tab_durees = nullptr;
   }
-
-
-public:
 
 
   /**
@@ -150,7 +158,7 @@ public:
         output << "Chapter " << (i+1) <<"Length : "
         << getLength()[i] <<"\n";
       }
-      output << endl;
+      output << "|";
     }
 
   film(const film& from) : video(from.name, from.path, from.duree),

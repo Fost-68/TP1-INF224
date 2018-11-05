@@ -1,5 +1,15 @@
-#include "main.h"
+#include <iostream>
+#include <string>
 #include <memory>
+
+#include "multiTable.h"
+#include "tcpserver.h"
+#include "MyBase.h"
+
+using namespace std;
+using namespace cppu;
+
+const int PORT = 3331;
 
 typedef std::shared_ptr<multimedia> multiPtr;
 
@@ -16,30 +26,25 @@ typedef std::shared_ptr<multimedia> multiPtr;
  */
 int main()
 {
-  groupe * testGroup = new groupe("test_group");
-  groupe * testGroup2 = new groupe("test_group2");
-  printf("%s\n\n\n", (testGroup->getName()).c_str());
+  multiTable * multi = new multiTable();
 
-  multiPtr m1 (new photo("photo1", "multi/photo1.jpeg", 100, 100));
-  multiPtr m2 (new video("video1", "multi/video1.mp4", 100));
-  multiPtr m3 (new photo("photo2", "multi/photo2.jpeg", 100, 100));
+  multi->createPhoto("photo1", "multi/photo1.jpeg", 100,100);
+  multi->createVideo("video1", "multi/video1.mp4", 100);
+  multi->createPhoto("photo2", "multi/photo2.jpeg", 100,100);
 
-  testGroup->push_back(m1);
-  testGroup->push_back(m2);
-  testGroup->push_back(m3);
+  shared_ptr<TCPServer> server(new TCPServer());
+  shared_ptr<MyBase> base(new MyBase(multi));
+  server->setCallback(*base, &MyBase::processRequest);
 
-  testGroup2->push_back(m1);
-  testGroup2->push_back(m3);
+  cout << "Starting Server on port " << PORT << endl;
+  int status = server->run(PORT);
 
-  m1.reset();
-  m2.reset();
-  m3.reset();
+  if (status < 0) {
+    cerr << "Could not start Server on port " << PORT << endl;
+    return 1;
+  }
 
-  testGroup->printGroup(cout);
-  delete(testGroup);
-
-  testGroup2->printGroup(cout);
-  delete(testGroup2);
+  return 0;
 
   exit(0);
 }

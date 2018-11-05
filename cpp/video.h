@@ -6,6 +6,8 @@
 #include <string>
 using namespace std;
 
+#include "multiTable.h"
+
 /**
  * \file      video.h
  * \author    WILME
@@ -29,7 +31,12 @@ using namespace std;
 */
 class video : public multimedia{
 
+
+
+
 protected:
+  friend class film;
+  friend class multiTable;
   int duree; /*!< La duree de la video */
 
   /**
@@ -53,12 +60,14 @@ protected:
   */
   video(string _name, string _path, int _duree) : multimedia(_name, _path), duree(_duree) {}
 
+
+
+public:
   /**
   * \brief \b Destructeur d'une video
   */
   virtual ~video() {};
 
-public:
   /**
   * \brief \b Getter de la duree d'une video
   * \return Un \e int contenant la duree de la video en secondes
@@ -85,7 +94,7 @@ public:
       << "type : Video\n"
       << "duree :" << getDuree() <<'\n'
       << "---------------------------"
-      <<endl;
+      << "|";
     }
 
 

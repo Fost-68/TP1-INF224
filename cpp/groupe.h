@@ -4,11 +4,14 @@
 #include <iostream>
 #include <string>
 #include <memory>
+#include <list>
+#include "multimedia.h"
+#include "multiTable.h"
 
 using namespace std;
 typedef std::shared_ptr<multimedia> multiPtr;
 
-#include <list>
+
 /**
  * \file      groupe.h
  * \author    WILME
@@ -30,6 +33,8 @@ typedef std::shared_ptr<multimedia> multiPtr;
  */
 class groupe : public list<multiPtr>
 {
+
+friend class multiTable;
 
 private:
   string name; /*! Le nom du groupe */
