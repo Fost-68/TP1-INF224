@@ -17,9 +17,7 @@ public class MyMenuBar extends JMenuBar{
      * @see Menu
      */
     public MyMenuBar(){
-        this.add(new Menu("Menu1"));
-        this.add(new Menu("Menu2"));
-        this.add(new Menu("Menu3"));
+        this.add(new Menu("?"));
 
         this.setVisible(true);
     }
@@ -40,9 +38,7 @@ class Menu extends JMenu{
      */
     public Menu(String menuName){
         super(menuName);
-        this.add(new JMenuItem(Actions.getAction(Actions.PRINT_LINE_1)));
-        this.add(new JMenuItem(Actions.getAction(Actions.PRINT_LINE_2)));
-        this.add(new JMenuItem(Actions.getAction(Actions.EXIT)));
+        this.add(new JMenuItem("Help"));
     }
 
 }
