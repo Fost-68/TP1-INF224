@@ -51,6 +51,8 @@ public:
 
     if(!iss){
       response = "ERREUR : Pas d'argument sur la requête";
+    } else if (subs == "fetch") {
+      fetchMultimedias(response);
     }
 
     else{
@@ -96,5 +98,9 @@ public:
     ostringstream oss;
     multi->search(name, oss);
     response = oss.str();
+  }
+
+  void fetchMultimedias(string& response){
+    response = multi->fetchMultimedias();
   }
 };
