@@ -16,26 +16,31 @@ public class RequestThread extends Thread{
         String request = "";
 
         while(true){
-            request = "";
-            request = panel.getOutputText().replace("Command > ", "");
+            request = panel.getOutputText();
+
+            if(request == null){
+                request = "";
+            }
+
+            System.out.println(request);
 
             if(request.length() > 0) {
-                if (request.charAt(request.length() - 1) == '\n') {
-                    panel.printInputText("Sending :\n\t " + (request.replace("\n", "")));
+                if (request.endsWith("\n")) {
+                    panel.printInputText("Sending :\t " + (request.replace("\n", "")));
                     panel.clearOutputText();
                     processReply(client.send(request));
                 }
 
             }
-
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-
-
     }
 
     private void processReply(String reply){
-        System.out.println(reply);
-        panel.printInputText(("Received :\n\t " +reply).replace("$", "\n"));
-        panel.printInputText("\n");
+        panel.printInputText(("Received :\n\t " +reply).replace("$", "\n\t"));
     }
 }

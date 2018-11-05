@@ -1,7 +1,6 @@
 package ihm;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -29,8 +28,12 @@ public final class TextPanel extends JPanel{
 	    this.setLayout(new BorderLayout());
 
 	    JPanel commandPanel = new JPanel();
-        commandPanel.setLayout(new GridLayout(1,2));
-        JTextArea
+        commandPanel.setLayout(new BorderLayout());
+
+        JTextArea commandTextArea = new JTextArea("Command > ");
+        commandTextArea.setEditable(false);
+        commandTextArea.setSize(30,40);
+
 
 
 	    inputTextArea = new JTextArea();
@@ -38,15 +41,16 @@ public final class TextPanel extends JPanel{
 	    inputTextArea.setSize(200, 200);
 
 		outputTextArea = new JTextArea();
-		outputTextArea.setSize(30,200);
+		outputTextArea.setSize(30,300);
 
-		this.clearOutputText();
 
+		commandPanel.add(commandTextArea, BorderLayout.WEST);
+		commandPanel.add(outputTextArea, BorderLayout.CENTER);
 
         JScrollPane scroller = new JScrollPane(inputTextArea);
         scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        this.add(outputTextArea, BorderLayout.NORTH);
+        this.add(commandPanel, BorderLayout.NORTH);
 		this.add(scroller, BorderLayout.CENTER);
 
 	}
@@ -65,7 +69,7 @@ public final class TextPanel extends JPanel{
      *
      */
 	public void clearOutputText(){
-        outputTextArea.setText("Command > ");
+        outputTextArea.setText("");
 	}
 
     /**
