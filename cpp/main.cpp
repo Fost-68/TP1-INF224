@@ -28,6 +28,10 @@ int main()
 {
   multiTable * multi = new multiTable();
 
+  multi->createPhoto("photo1", "multi/photo1.jpeg", 100,100);
+  multi->createVideo("video1", "multi/video1.mp4", 100);
+  multi->createPhoto("photo2", "multi/photo2.jpeg", 100,100);
+
   shared_ptr<TCPServer> server(new TCPServer());
   shared_ptr<MyBase> base(new MyBase(multi));
   server->setCallback(*base, &MyBase::processRequest);

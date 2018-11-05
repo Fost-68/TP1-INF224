@@ -46,20 +46,21 @@ public:
     istringstream iss (request);
 
     string subs;
+    string subs2;
     iss >> subs;
 
-    if(iss){
+    if(!iss){
       response = "ERREUR : Pas d'argument sur la requête";
     }
 
     else{
-        iss >> subs;
+        iss >> subs2;
 
-        if(request == "play")
-          playRequest(subs, response);
+        if(subs == "play")
+          playRequest(subs2, response);
 
-        else if(request == "print")
-          printRequest(subs, response);
+        else if(subs == "print")
+          printRequest(subs2, response);
 
         else
           response = "ERREUR : Requête non reconnue";

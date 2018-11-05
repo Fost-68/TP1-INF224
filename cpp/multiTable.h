@@ -81,7 +81,7 @@ public:
     multiDict::iterator it = muDict.find(name);
 
     if(it == muDict.end()){
-      output << "Media " << name << " Not Found |";
+      output << "Media '" << name << "' Not Found |";
       return false;
     }
 
@@ -96,7 +96,7 @@ public:
     groupDict:: iterator it = grDict.find(name);
 
     if(it == grDict.end()){
-      output << "Group" << name << "Not Found |";
+      output << "Group '" << name << "' Not Found |";
       return false;
     }
 
@@ -115,7 +115,7 @@ public:
     multiDict::iterator it = muDict.find(name);
 
     if(it == muDict.end()){
-      output << "Media" << name <<"Not found |";
+      output << "Media '" << name <<"' Not found |";
     }
 
     else{
