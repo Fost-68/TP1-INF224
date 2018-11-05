@@ -123,6 +123,14 @@ public:
       output << "Playing Media " << name << "|";
     }
   }
+
+  string fetchMultimedias() {
+    string res = "fetch";
+    for (multiDict::iterator it=muDict.begin(); it!=muDict.end(); ++it) {
+      res += " " + it->second->getObjName();
+    }
+    return res;
+  }
 };
 
 
