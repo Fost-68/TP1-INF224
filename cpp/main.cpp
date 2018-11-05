@@ -1,5 +1,15 @@
-#include "main.h"
+#include <iostream>
+#include <string>
 #include <memory>
+
+#include "multiTable.h"
+#include "tcpserver.h"
+#include "MyBase.h"
+
+using namespace std;
+using namespace cppu;
+
+const int PORT = 3331;
 
 typedef std::shared_ptr<multimedia> multiPtr;
 
@@ -16,14 +26,21 @@ typedef std::shared_ptr<multimedia> multiPtr;
  */
 int main()
 {
-
   multiTable * multi = new multiTable();
 
-  multi->createPhoto("photo1", "multi/photo1.jpeg", 100, 100);
-  multi->createVideo("video1", "multi/video1.mp4", 100);
-  multi->createPhoto("photo2", "multi/photo2.jpeg", 100, 100);
+  shared_ptr<TCPServer> server(new TCPServer());
+  shared_ptr<MyBase> base(new MyBase(multi));
+  server->setCallback(*base, &MyBase::processRequest);
 
-  multi->play("video1", cout);
+  cout << "Starting Server on port " << PORT << endl;
+  int status = server->run(PORT);
+
+  if (status < 0) {
+    cerr << "Could not start Server on port " << PORT << endl;
+    return 1;
+  }
+
+  return 0;
 
   exit(0);
 }

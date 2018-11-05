@@ -94,7 +94,7 @@ public:
       << "type : Video\n"
       << "duree :" << getDuree() <<'\n'
       << "---------------------------"
-      <<endl;
+      << "|";
     }
 
 

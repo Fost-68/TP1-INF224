@@ -77,35 +77,51 @@ public:
     addGroup(name, groupPtr(new groupe(name)));
   }
 
-  void searchMulti(string name, ostream& output){
+  bool searchMulti(string name, ostream& output){
     multiDict::iterator it = muDict.find(name);
 
-    if(it == muDict.end())
-      output << "Not Found" << endl;
+    if(it == muDict.end()){
+      output << "Media " << name << " Not Found |";
+      return false;
+    }
 
-    else
+    else{
       muDict[name]->printMedia(output);
+      return true;
+    }
+
   }
 
-  void searchGroup(string name, ostream& output){
+  bool searchGroup(string name, ostream& output){
     groupDict:: iterator it = grDict.find(name);
 
-    if(it == grDict.end())
-      output << "Not Found" << endl;
+    if(it == grDict.end()){
+      output << "Group" << name << "Not Found |";
+      return false;
+    }
 
-    else
+    else{
       grDict[name]->printGroup(output);
+      return true;
+    }
+  }
+
+  void search(string name, ostream& output){
+    if(!(searchMulti(name, output)))
+      searchGroup(name, output);
   }
 
   void play(const string name, ostream& output){
     multiDict::iterator it = muDict.find(name);
 
     if(it == muDict.end()){
-      output << "Not found" << endl;
+      output << "Media" << name <<"Not found |";
     }
 
-    else
+    else{
       muDict[name]->playMedia();
+      output << "Playing Media " << name << "|";
+    }
   }
 };
 
